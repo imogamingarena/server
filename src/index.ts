@@ -1,18 +1,14 @@
-interface User {
-  name: string;
-  age: number;
-}
+import express, { Request, Response } from 'express';
 
-const user: User = {
-  name: "John",
-  age: 30
-};
+const app = express();
+const PORT = 3000;
 
-console.log(`Hello, ${user.name}! You are ${user.age} years old.`);
+// basic route
+app.get('/', (req: Request, res: Response) => {
+  res.send('Hello, Express + TypeScript!');
+});
 
-// Example async function
-const fetchData = async (): Promise<string> => {
-  return "Data fetched";
-};
-
-fetchData().then(console.log);
+// start server
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
